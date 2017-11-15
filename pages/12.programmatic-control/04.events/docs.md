@@ -15,21 +15,21 @@ Select2 will trigger a few different events when different actions are taken usi
 | ----- | ----------- |
 | `change` | Triggered whenever an option is selected or removed. |
 | `change.select2` | Scoped version of `change`.  See [below](#limiting-the-scope-of-the-change-event) for more details. |
-| `select2:closing` | Triggered before the dropdown is closed. This event can be prevented. |
-| `select2:close` | Triggered whenever the dropdown is closed. `select2:closing` is fired before this and can be prevented. |
-| `select2:opening` | Triggered before the dropdown is opened. This event can be prevented. |
-| `select2:open` | Triggered whenever the dropdown is opened. `select2:opening` is fired before this and can be prevented. |
-| `select2:selecting` | Triggered before a result is selected. This event can be prevented. |
-| `select2:select` | Triggered whenever a result is selected. `select2:selecting` is fired before this and can be prevented. |
-| `select2:unselecting` | Triggered before a selection is removed. This event can be prevented. |
-| `select2:unselect` | Triggered whenever a selection is removed. `select2:unselecting` is fired before this and can be prevented. |
+| `select2-closing` | Triggered before the dropdown is closed. This event can be prevented. |
+| `select2-close` | Triggered whenever the dropdown is closed. `select2:closing` is fired before this and can be prevented. |
+| `select2-opening` | Triggered before the dropdown is opened. This event can be prevented. |
+| `select2-open` | Triggered whenever the dropdown is opened. `select2:opening` is fired before this and can be prevented. |
+| `select2-selecting` | Triggered before a result is selected. This event can be prevented. |
+| `select2-select` | Triggered whenever a result is selected. `select2:selecting` is fired before this and can be prevented. |
+| `select2-unselecting` | Triggered before a selection is removed. This event can be prevented. |
+| `select2-unselect` | Triggered whenever a selection is removed. `select2:unselecting` is fired before this and can be prevented. |
 
 ## Listening for events
 
 All public events are relayed using the jQuery event system, and they are triggered on the `<select>` element that Select2 is attached to. You can attach to them using the [`.on` method](https://api.jquery.com/on/) provided by jQuery:
 
 ```
-$('#mySelect2').on('select2:select', function (e) {
+$('#mySelect2').on('select2-select', function (e) {
   // Do something
 });
 ```
@@ -39,7 +39,7 @@ $('#mySelect2').on('select2:select', function (e) {
 When `select2:select` is triggered, data from the selection can ba accessed via the `params.data` property:
 
 ```
-$('#mySelect2').on('select2:select', function (e) {
+$('#mySelect2').on('select2-select', function (e) {
     var data = e.params.data;
     console.log(data);
 });
@@ -108,10 +108,10 @@ var $eventSelect = $(".js-example-events");
 
 $eventSelect.select2();
 
-$eventSelect.on("select2:open", function (e) { log("select2:open", e); });
-$eventSelect.on("select2:close", function (e) { log("select2:close", e); });
-$eventSelect.on("select2:select", function (e) { log("select2:select", e); });
-$eventSelect.on("select2:unselect", function (e) { log("select2:unselect", e); });
+$eventSelect.on("select2-open", function (e) { log("select2:open", e); });
+$eventSelect.on("select2-close", function (e) { log("select2:close", e); });
+$eventSelect.on("select2-select", function (e) { log("select2:select", e); });
+$eventSelect.on("select2-unselect", function (e) { log("select2:unselect", e); });
 
 $eventSelect.on("change", function (e) { log("change"); });
 
